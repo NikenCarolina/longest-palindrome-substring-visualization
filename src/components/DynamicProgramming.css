@@ -1,0 +1,223 @@
+:root {
+    --step-border-radius: 0.5rem;
+    --border-color: rgba(86, 86, 86, 1);
+    --section-background-color: rgb(29, 29, 30);
+    --header-background-color:rgb(45, 45, 50);
+}
+
+main {
+	display: grid;
+	grid-template-columns:
+		[full-width-start] 
+		
+		minmax(2rem, 1fr)
+		
+		[break-out-start] 
+		
+		minmax(0, 100px)
+		
+		[content-start] 
+		
+		min(calc(100% - 4rem), 900px) 
+		
+		[content-end]
+		
+		minmax(0, 100px)
+    	
+		[break-out-end] 
+		
+		minmax(2rem, 1fr)
+		
+		[full-width-end];
+
+	position: relative;
+}
+
+main > * {
+	grid-column: content;
+}
+
+main > .full-width {
+	grid-column: full-width;
+}
+
+
+main > .breakout {
+	grid-column: break-out;
+}
+
+.flow > * {
+	margin-top: 4rem;
+	margin-bottom: 4rem;
+}
+
+.matrix-wrapper {
+    display: inline-block;
+}
+
+.step-title {
+    text-align: left;
+    display: grid; 
+    grid-template-columns: 1fr auto auto; 
+    position:sticky;
+    top:0px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+    border-radius: var(--step-border-radius);
+    
+}
+
+.step-title:hover {
+    background-color: rgba(45, 45, 50, 30%);
+    backdrop-filter: blur(10px);
+}
+
+.step-title h2 {
+    border-radius: var(--step-border-radius) 0 0 var(--step-border-radius);
+    padding-left:1rem;
+    padding-top: 2rem;
+    padding-bottom: 1.5rem;
+    margin:0;
+}
+
+.step-title:hover > h2:hover {
+    background-color:rgba(45, 45, 50, 75%);
+    backdrop-filter: blur(10px);
+}
+
+.step-title a {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 100%;
+    width: 4rem;
+    flex-direction: column;
+}
+
+.step-title:hover > a:hover {
+    background-color: rgba(45, 45, 50, 75%); 
+    backdrop-filter: blur(10px);
+}
+
+
+.step-title .next-button {
+    border-radius: 0 var(--step-border-radius) var(--step-border-radius) 0;
+}
+
+.last-button {
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    padding: 0;
+    background-color:transparent;
+    border-radius: 0 var(--step-border-radius) var(--step-border-radius) 0;
+    border: none;
+}
+
+.step-title svg {
+    height: 50%;
+    width: 50%;
+    
+}
+
+.step-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    row-gap: 1rem;
+    border-radius: var(--step-border-radius);
+    column-gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.header {
+    display: flex;
+    justify-content: left;
+    background-color: rgb(45, 45, 50);
+    border-radius: 0.5rem 0.5rem 0 0;
+    position: relative;
+    padding: 0 1rem 0 1rem;
+}
+
+.header h3{
+    margin: 0.75rem 0 0.5rem 0;
+}
+
+
+
+.text-block {
+    padding: 0 1rem 0 1rem;
+}
+
+.step-matrix {
+    grid-column: 1;
+    grid-row: 1/ span 2;
+    border-radius: var(--step-border-radius);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--section-background-color);
+    width:100%;
+}
+
+.step-explanation {
+    grid-column: 2;
+    grid-row: 1;
+    border-radius: var(--step-border-radius);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--section-background-color);
+
+}
+
+.step-answer {
+    grid-column: 2;
+    grid-row: 2;
+    border-radius: var(--step-border-radius);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--section-background-color);
+}
+
+input[type=text] {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: var(--border-color) 1px solid;
+    background-color: rgba(31, 31, 31, 0.5);
+    color:white;
+    outline: none;
+    font-family: "Rubik", sans-serif;
+}
+
+input[type=text]:focus {
+    border: rgb(239, 239, 239) 1px solid;
+    background-color: rgba(31, 31, 31, 0.5);
+    
+}
+
+
+@media (max-width: 800px) {
+    .step-container {
+      max-width: 100%;
+      grid-template-columns: 1fr; 
+    }
+    
+    .step-matrix {
+      grid-column: 1;
+      grid-row: 1;
+      max-width:100%;
+      min-width:1px;
+    }
+    
+    .step-explanation {
+      grid-column: 1;
+      grid-row: 2;
+    }
+    
+    .step-answer {
+      grid-column: 1;
+      grid-row: 3;
+    }
+  }

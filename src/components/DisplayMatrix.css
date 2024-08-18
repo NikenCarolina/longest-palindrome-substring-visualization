@@ -1,0 +1,98 @@
+:root {
+    --value-true-color: rgb(124, 213, 56);
+    --value-true-background-color: rgba(66, 115, 43, 0.5);
+    --value-false-color:rgb(242, 95, 95);
+    --value-false-background-color:rgba(99, 36, 36, 0.5);
+    --value-updated-color:rgb(255, 255, 255);
+    --value-updated-background-color:rgba(43, 72, 115, 1);
+
+}
+.table-wrapper {
+    flex-grow: 1;
+    max-width:100%;
+    overflow-x:scroll;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+.table-wrapper table {
+    border-collapse: collapse;
+}
+
+.table-wrapper th, td{
+    min-width: 2rem;
+    height: 2rem;
+
+    white-space: nowrap; 
+
+
+}
+
+.table-header {
+    background-color: transparent;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.value-true {
+    background-color: var(--value-true-background-color);
+    font-weight: bold;
+    color: var(--value-true-color);
+}
+
+.value-false {
+    background-color: var(--value-false-background-color);
+    font-weight: lighter;
+    color: var(--value-false-color);
+}
+
+.value-updated {
+    background-color: var(--value-updated-background-color);
+    font-weight: bolder;
+    color: var(--value-updated-color);
+}
+
+.column-updated {
+    border-left: rgba(96, 106, 131, 1) 1px solid;
+    border-right: rgba(96, 106, 131, 1) 1px solid;
+    position:relative;
+}
+
+.table-header p {
+    position: absolute;
+    text-align: center;
+    color: white;
+    z-index: 1;
+    width: 100%;
+    top: 0.25em;
+    left:0;
+    margin: 0;
+
+}
+
+.column-updated::before {
+    content: '';
+    height:100%;
+    width:100%;
+    position:absolute;
+    top:0;
+    left: 0;
+    z-index: 0;
+    background-color: rgba(43, 72, 115, 0.3);
+}
+
+
+.row-updated {
+    background-color: rgba(43, 72, 115, 0.5);
+    border-top: rgba(96, 106, 131, 1) 1px solid;
+    border-bottom: rgba(96, 106, 131, 1) 1px solid;
+    color: white;
+
+}
+@media (max-width:800px) {
+    .table-wrapper {
+        justify-content:start;
+    }    
+}
